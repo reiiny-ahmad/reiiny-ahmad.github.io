@@ -1,5 +1,5 @@
-# CV non publié : il contient email et téléphone en clair
-assets/CV-Ahmed-Jabri.pdf
+# Photos non publiées (le site affiche les initiales « AJ »)
+assets/photo.*
 
 # Configuration locale
 .claude/

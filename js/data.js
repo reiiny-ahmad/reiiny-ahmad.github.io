@@ -21,15 +21,15 @@ window.PORTFOLIO = {
 
     linkedin: "https://www.linkedin.com/in/jabri-ahmed-629905287/",
     cv: "assets/CV-Ahmed-Jabri.pdf",     // déposez votre CV à cet emplacement
-    photo: "assets/photo.jpg"            // déposez votre photo à cet emplacement (format carré conseillé)
+    photo: ""                            // chemin d'une photo carrée (ex. "assets/photo.jpg") ; vide = initiales « AJ »
   },
 
   content: {
     /* ============================== FRANÇAIS ============================== */
     fr: {
       meta: {
-        title: "Ahmed JABRI — Ingénieur IA & candidat au doctorat",
-        description: "Portfolio d'Ahmed JABRI, Ingénieur d'État en Informatique et Intelligence Artificielle (HESTIM) et diplômé d'un Master en Cyberdéfense (INSA Hauts-de-France). Deep learning, vision par ordinateur, systèmes intelligents."
+        title: "Ahmed JABRI — Ingénieur IA & Cybersécurité",
+        description: "Site personnel d'Ahmed JABRI, Ingénieur d'État en Génie Informatique et Intelligence Artificielle (HESTIM), double diplômé d'un Master en Cyberdéfense (INSA Hauts-de-France). IA, vision par ordinateur, cybersécurité et data science."
       },
 
       ui: {
@@ -38,7 +38,7 @@ window.PORTFOLIO = {
         "nav.journey": "Parcours",
         "nav.projects": "Projets",
         "nav.skills": "Compétences",
-        "nav.research": "Recherche",
+        "nav.research": "Intérêts",
         "nav.contact": "Contact",
         "nav.cta": "Me contacter",
         "a11y.theme": "Changer de thème",
@@ -47,9 +47,9 @@ window.PORTFOLIO = {
         "a11y.top": "Revenir en haut",
         "a11y.close": "Fermer",
 
-        "hero.badge": "Ouvert aux opportunités de doctorat en IA",
+        "hero.badge": "IA · Vision par ordinateur · Cybersécurité",
         "hero.hello": "Bonjour, je suis",
-        "hero.intro": "Ingénieur d'État en Informatique & Intelligence Artificielle et diplômé d'un Master en Cyberdéfense. Je conçois des systèmes intelligents en deep learning et vision par ordinateur — de la recherche au déploiement.",
+        "hero.intro": "Ingénieur d'État en Génie Informatique & Intelligence Artificielle, double diplômé d'un Master en Cyberdéfense. Je conçois des systèmes intelligents en deep learning et vision par ordinateur — de l'idée au déploiement.",
         "hero.ctaContact": "Me contacter",
         "hero.ctaProjects": "Voir mes projets",
         "hero.ctaCv": "Télécharger le CV",
@@ -80,48 +80,47 @@ window.PORTFOLIO = {
         "skills.sub": "Les outils et méthodes que j'utilise pour passer d'une idée de recherche à un système opérationnel.",
         "skills.certs": "Certifications",
 
-        "research.kicker": "05 — Recherche",
-        "research.title": "Centres d'intérêt en recherche",
-        "research.goalLabel": "Objectif",
-        "research.goalTitle": "Un doctorat en Intelligence Artificielle",
-        "research.goalText": "Je souhaite poursuivre un doctorat pour approfondir mes travaux en apprentissage profond, vision par ordinateur et systèmes intelligents. Mon double parcours — IA à HESTIM, cyberdéfense à l'INSA Hauts-de-France — et mes projets appliqués m'ont appris à relier les questions de recherche aux contraintes réelles de déploiement.",
-        "research.cta": "Proposer un sujet de thèse",
+        "research.kicker": "05 — Centres d'intérêt",
+        "research.title": "Ce qui m'intéresse",
+        "research.goalLabel": "Ce qui m'anime",
+        "research.goalTitle": "Transformer une idée en système qui fonctionne",
+        "research.goalText": "Passionné par l'intelligence artificielle, la cybersécurité, la data science et le développement de solutions innovantes, j'aime mener un projet de bout en bout : comprendre le problème, concevoir le modèle, puis le déployer de façon fiable et sécurisée. Mon double parcours — IA à HESTIM, cyberdéfense à l'INSA Hauts-de-France — me permet d'aborder chaque projet sous ces deux angles.",
+        "research.cta": "Échanger avec moi",
         "research.domains": "Domaines d'application explorés",
 
         "contact.kicker": "06 — Contact",
         "contact.title": "Travaillons ensemble",
-        "contact.sub": "Une offre de thèse, un projet de recherche ou une collaboration ? Écrivez-moi, je vous réponds rapidement.",
+        "contact.sub": "Une question, un projet ou simplement envie d'échanger ? Écrivez-moi, je vous réponds rapidement.",
         "contact.quick": "Contact direct",
         "contact.email": "Email",
         "contact.whatsapp": "WhatsApp",
         "contact.call": "Appeler",
         "contact.callback": "Être rappelé",
-        "contact.privacyTitle": "Coordonnées protégées",
-        "contact.privacy": "Mon email et mon numéro ne sont pas affichés publiquement. Les boutons ci-dessus ouvrent directement votre messagerie, WhatsApp ou votre téléphone.",
         "contact.location": "Basé à Casablanca, Maroc",
 
         "form.title": "Envoyer un message",
         "form.name": "Nom complet",
-        "form.namePh": "Ex. Pr. Marie Dupont",
+        "form.namePh": "Ex. Marie Dupont",
         "form.email": "Votre email",
-        "form.emailPh": "nom@universite.fr",
-        "form.phone": "Votre téléphone",
+        "form.emailPh": "nom@exemple.com",
+        "form.phone": "Votre numéro de téléphone",
+        "form.whatsapp": "Votre numéro WhatsApp",
+        "form.phoneHint": "Indiquez l'indicatif du pays (ex. +212, +33).",
         "form.phonePh": "+33 6 12 34 56 78",
-        "form.optional": "optionnel",
-        "form.prefer": "Je préfère être recontacté par",
+        "form.prefer": "Comment souhaitez-vous être recontacté ?",
         "form.prefEmail": "Email",
         "form.prefPhone": "Téléphone",
         "form.prefWhatsapp": "WhatsApp",
         "form.subject": "Sujet",
         "form.message": "Message",
-        "form.messagePh": "Présentez brièvement votre laboratoire, votre projet ou votre offre…",
+        "form.messagePh": "Présentez-vous brièvement et dites-moi de quoi vous souhaitez parler…",
         "form.send": "Envoyer le message",
         "form.sending": "Envoi en cours…",
         "form.note": "Vos informations servent uniquement à vous répondre.",
 
         "err.name": "Veuillez indiquer votre nom.",
         "err.email": "Veuillez saisir une adresse email valide.",
-        "err.phone": "Un numéro est nécessaire pour ce mode de contact.",
+        "err.phone": "Veuillez indiquer votre numéro.",
         "err.phoneInvalid": "Numéro de téléphone invalide.",
         "err.message": "Votre message doit contenir au moins 10 caractères.",
 
@@ -135,7 +134,7 @@ window.PORTFOLIO = {
         "msg.whatsapp": "Bonjour Ahmed, je vous contacte depuis votre portfolio.",
         "msg.emailSubject": "Contact depuis votre portfolio",
         "msg.project": "Bonjour Ahmed, j'aimerais échanger avec vous au sujet de votre projet « {project} ».",
-        "msg.thesis": "Bonjour Ahmed, je vous contacte au sujet d'une opportunité de doctorat.",
+        "msg.hello": "Bonjour Ahmed, j'ai découvert votre site et j'aimerais échanger avec vous.",
 
         "footer.rights": "Tous droits réservés.",
         "footer.made": "Conçu et développé à Casablanca."
@@ -146,32 +145,33 @@ window.PORTFOLIO = {
         "Passionné de Deep Learning",
         "Ingénieur Vision par ordinateur",
         "Profil Cyberdéfense & Sécurité",
-        "Futur doctorant en IA"
+        "Passionné de Data Science"
       ],
 
       stats: [
         { value: 5, label: "Projets IA & sécurité" },
         { value: 3, label: "Stages en entreprise" },
-        { value: 4, label: "Certifications" },
+        { value: 5, label: "Certifications" },
         { value: 2, label: "Diplômes · Maroc & France" }
       ],
 
       about: {
         paragraphs: [
-          "Je suis <strong>Ingénieur d'État en Informatique et Intelligence Artificielle</strong>, diplômé de HESTIM (Casablanca), et titulaire simultanément d'un <strong>Master en Réseaux et Télécommunications – Cyberdéfense et Sécurité de l'Information</strong> de l'INSA Hauts-de-France, dans le cadre d'un programme de double diplomation.",
+          "Je suis <strong>Ingénieur d'État en Génie Informatique et Intelligence Artificielle</strong>, diplômé de HESTIM (Casablanca), et titulaire simultanément d'un <strong>Master en Réseaux et Télécommunications – Cyberdéfense et Sécurité de l'Information</strong> de l'INSA Hauts-de-France, dans le cadre d'un programme de double diplomation.",
           "Mon travail se situe à l'intersection du <strong>deep learning</strong>, de la <strong>vision par ordinateur</strong> et des <strong>systèmes intelligents</strong> : segmentation d'images médicales, reconnaissance de la langue des signes, contrôle qualité industriel ou surveillance intelligente des examens. Ma formation en cybersécurité m'apporte une vision rigoureuse de la fiabilité et du déploiement des systèmes.",
-          "Je recherche aujourd'hui une <strong>opportunité de doctorat en Intelligence Artificielle</strong> afin d'approfondir mes travaux de recherche."
+          "Passionné par l'<strong>intelligence artificielle</strong>, la <strong>cybersécurité</strong>, la <strong>data science</strong> et le développement de solutions innovantes, je partage ici mon parcours et les projets sur lesquels je travaille."
         ],
         facts: [
           { icon: "mapPin", label: "Localisation", value: "Casablanca, Maroc" },
           { icon: "graduation", label: "Double diplôme", value: "HESTIM × INSA Hauts-de-France" },
-          { icon: "target", label: "Objectif", value: "Doctorat en IA" },
+          { icon: "cpu", label: "Domaines", value: "IA · Cybersécurité · Data" },
           { icon: "languages", label: "Langues", value: "Français · Anglais" }
         ],
         soft: [
           { icon: "heart", label: "Intelligence émotionnelle" },
           { icon: "listChecks", label: "Organisation" },
-          { icon: "users", label: "Travail en équipe" }
+          { icon: "users", label: "Travail en équipe" },
+          { icon: "messageText", label: "Communication efficace" }
         ]
       },
 
@@ -206,7 +206,7 @@ window.PORTFOLIO = {
         {
           period: "2021 – 2026",
           org: "HESTIM — Casablanca, Maroc",
-          role: "Diplôme d'Ingénieur d'État en Informatique et Intelligence Artificielle",
+          role: "Diplôme d'Ingénieur d'État en Génie Informatique et Intelligence Artificielle",
           desc: "Formation de 5 ans, équivalent M.Eng. / M.Sc."
         },
         {
@@ -314,20 +314,20 @@ window.PORTFOLIO = {
           cats: ["vision", "research"],
           label: "Recherche",
           title: "Détection intelligente de la triche aux examens",
-          summary: "Système de surveillance capable de détecter les comportements de triche à partir d'images de caméras de surveillance.",
+          summary: "Système de détection de la triche en salle d'examen, basé sur YOLO (détection de smartphones) et l'analyse d'images de caméras de surveillance.",
           context: "Projet de recherche — HESTIM",
           highlights: [
             "Analyse automatique d'images issues de caméras de surveillance de salles d'examen",
-            "Identification des comportements suspects des candidats",
+            "Détection des smartphones avec YOLO et identification des comportements suspects",
             "Démarche de recherche : état de l'art, constitution des données, expérimentation et évaluation",
             "Objectif : assister les surveillants et renforcer l'équité des examens"
           ],
-          tags: ["Vision par ordinateur", "Deep Learning", "Analyse comportementale", "Recherche"]
+          tags: ["Vision par ordinateur", "YOLO", "Deep Learning", "Recherche"]
         }
       ],
 
       skills: [
-        { icon: "brain", title: "Deep Learning & IA", items: ["Python", "TensorFlow", "PyTorch", "Réseaux de neurones"] },
+        { icon: "brain", title: "Deep Learning & IA", items: ["Python", "Machine Learning", "TensorFlow", "PyTorch", "Réseaux de neurones"] },
         { icon: "eye", title: "Vision par ordinateur", items: ["OpenCV", "torchvision", "Ultralytics YOLO", "Détection d'objets", "Segmentation"] },
         { icon: "chart", title: "Analyse de données", items: ["Pandas", "NumPy", "Scikit-learn"] },
         { icon: "cloud", title: "Outils & Cloud", items: ["Git", "Docker", "Jupyter", "AWS"] },
@@ -337,6 +337,7 @@ window.PORTFOLIO = {
 
       certifications: [
         { title: "Neural Networks & Deep Learning", issuer: "Coursera", icon: "brain" },
+        { title: "Data Analysis for ML", issuer: "", icon: "chart" },
         { title: "HCIA Cloud Computing V5.5", issuer: "Huawei", icon: "cloud" },
         { title: "HCIA Security V4.0", issuer: "Huawei", icon: "shield" },
         { title: "Project Management (PMI)", issuer: "Coursera", icon: "listChecks" }
@@ -359,8 +360,8 @@ window.PORTFOLIO = {
       ],
 
       subjects: [
-        { id: "phd", label: "Opportunité de doctorat" },
-        { id: "research", label: "Collaboration de recherche" },
+        { id: "hello", label: "Prise de contact" },
+        { id: "collab", label: "Projet ou collaboration" },
         { id: "job", label: "Opportunité professionnelle" },
         { id: "other", label: "Autre" }
       ]
@@ -369,8 +370,8 @@ window.PORTFOLIO = {
     /* ============================== ENGLISH ============================== */
     en: {
       meta: {
-        title: "Ahmed JABRI — AI Engineer & PhD candidate",
-        description: "Portfolio of Ahmed JABRI, State Engineer in Computer Science and Artificial Intelligence (HESTIM) with a Master's in Cyber Defense (INSA Hauts-de-France). Deep learning, computer vision, intelligent systems."
+        title: "Ahmed JABRI — AI & Cybersecurity Engineer",
+        description: "Personal website of Ahmed JABRI, State Engineer in Computer Engineering and Artificial Intelligence (HESTIM) with a dual Master's degree in Cyber Defense (INSA Hauts-de-France). AI, computer vision, cybersecurity and data science."
       },
 
       ui: {
@@ -379,7 +380,7 @@ window.PORTFOLIO = {
         "nav.journey": "Journey",
         "nav.projects": "Projects",
         "nav.skills": "Skills",
-        "nav.research": "Research",
+        "nav.research": "Interests",
         "nav.contact": "Contact",
         "nav.cta": "Get in touch",
         "a11y.theme": "Toggle theme",
@@ -388,9 +389,9 @@ window.PORTFOLIO = {
         "a11y.top": "Back to top",
         "a11y.close": "Close",
 
-        "hero.badge": "Open to PhD opportunities in AI",
+        "hero.badge": "AI · Computer Vision · Cybersecurity",
         "hero.hello": "Hi, I'm",
-        "hero.intro": "State Engineer in Computer Science & Artificial Intelligence with a Master's in Cyber Defense. I build intelligent systems with deep learning and computer vision — from research to deployment.",
+        "hero.intro": "State Engineer in Computer Engineering & Artificial Intelligence, with a dual Master's degree in Cyber Defense. I build intelligent systems with deep learning and computer vision — from idea to deployment.",
         "hero.ctaContact": "Get in touch",
         "hero.ctaProjects": "View my projects",
         "hero.ctaCv": "Download CV",
@@ -421,48 +422,47 @@ window.PORTFOLIO = {
         "skills.sub": "The tools and methods I use to turn a research idea into a working system.",
         "skills.certs": "Certifications",
 
-        "research.kicker": "05 — Research",
-        "research.title": "Research interests",
-        "research.goalLabel": "Goal",
-        "research.goalTitle": "A PhD in Artificial Intelligence",
-        "research.goalText": "I want to pursue a PhD to deepen my work in deep learning, computer vision and intelligent systems. My dual background — AI at HESTIM, cyber defense at INSA Hauts-de-France — and my applied projects taught me to connect research questions with real deployment constraints.",
-        "research.cta": "Suggest a PhD topic",
+        "research.kicker": "05 — Interests",
+        "research.title": "What I'm into",
+        "research.goalLabel": "What drives me",
+        "research.goalTitle": "Turning an idea into a working system",
+        "research.goalText": "Passionate about artificial intelligence, cybersecurity, data science and building innovative solutions, I enjoy taking a project end to end: understanding the problem, designing the model, then deploying it reliably and securely. My dual background — AI at HESTIM, cyber defense at INSA Hauts-de-France — lets me approach every project from both angles.",
+        "research.cta": "Get in touch",
         "research.domains": "Application domains explored",
 
         "contact.kicker": "06 — Contact",
         "contact.title": "Let's work together",
-        "contact.sub": "A PhD position, a research project or a collaboration? Write to me — I'll get back to you quickly.",
+        "contact.sub": "A question, a project or just want to chat? Write to me — I'll get back to you quickly.",
         "contact.quick": "Direct contact",
         "contact.email": "Email",
         "contact.whatsapp": "WhatsApp",
         "contact.call": "Call",
         "contact.callback": "Request a call",
-        "contact.privacyTitle": "Protected contact details",
-        "contact.privacy": "My email address and phone number are not displayed publicly. The buttons above open your mail app, WhatsApp or phone directly.",
         "contact.location": "Based in Casablanca, Morocco",
 
         "form.title": "Send a message",
         "form.name": "Full name",
-        "form.namePh": "e.g. Prof. Jane Smith",
+        "form.namePh": "e.g. Jane Smith",
         "form.email": "Your email",
-        "form.emailPh": "name@university.edu",
-        "form.phone": "Your phone",
+        "form.emailPh": "name@example.com",
+        "form.phone": "Your phone number",
+        "form.whatsapp": "Your WhatsApp number",
+        "form.phoneHint": "Include your country code (e.g. +212, +33).",
         "form.phonePh": "+44 7700 900123",
-        "form.optional": "optional",
-        "form.prefer": "I'd prefer to be contacted by",
+        "form.prefer": "How would you like me to get back to you?",
         "form.prefEmail": "Email",
         "form.prefPhone": "Phone",
         "form.prefWhatsapp": "WhatsApp",
         "form.subject": "Subject",
         "form.message": "Message",
-        "form.messagePh": "Briefly introduce your lab, project or offer…",
+        "form.messagePh": "Briefly introduce yourself and tell me what you'd like to discuss…",
         "form.send": "Send message",
         "form.sending": "Sending…",
         "form.note": "Your details are only used to reply to you.",
 
         "err.name": "Please enter your name.",
         "err.email": "Please enter a valid email address.",
-        "err.phone": "A phone number is required for this contact method.",
+        "err.phone": "Please enter your number.",
         "err.phoneInvalid": "Invalid phone number.",
         "err.message": "Your message must be at least 10 characters long.",
 
@@ -476,7 +476,7 @@ window.PORTFOLIO = {
         "msg.whatsapp": "Hello Ahmed, I'm reaching out from your portfolio.",
         "msg.emailSubject": "Contact from your portfolio",
         "msg.project": "Hello Ahmed, I'd like to talk with you about your project \"{project}\".",
-        "msg.thesis": "Hello Ahmed, I'm contacting you about a PhD opportunity.",
+        "msg.hello": "Hello Ahmed, I came across your website and would like to get in touch.",
 
         "footer.rights": "All rights reserved.",
         "footer.made": "Designed and built in Casablanca."
@@ -487,32 +487,33 @@ window.PORTFOLIO = {
         "Deep Learning enthusiast",
         "Computer Vision Engineer",
         "Cyber Defense & Security background",
-        "Aspiring AI PhD researcher"
+        "Data Science enthusiast"
       ],
 
       stats: [
         { value: 5, label: "AI & security projects" },
         { value: 3, label: "Industry internships" },
-        { value: 4, label: "Certifications" },
+        { value: 5, label: "Certifications" },
         { value: 2, label: "Degrees · Morocco & France" }
       ],
 
       about: {
         paragraphs: [
-          "I am a <strong>State Engineer in Computer Science and Artificial Intelligence</strong> from HESTIM (Casablanca), and I simultaneously hold a <strong>Master's degree in Networks and Telecommunications – Cyber Defense and Information Security</strong> from INSA Hauts-de-France, through a dual-degree program.",
+          "I am a <strong>State Engineer in Computer Engineering and Artificial Intelligence</strong> from HESTIM (Casablanca), and I simultaneously hold a <strong>Master's degree in Networks and Telecommunications – Cyber Defense and Information Security</strong> from INSA Hauts-de-France, through a dual-degree program.",
           "My work sits at the intersection of <strong>deep learning</strong>, <strong>computer vision</strong> and <strong>intelligent systems</strong>: medical image segmentation, sign language recognition, industrial quality control and intelligent exam proctoring. My cybersecurity background brings a rigorous perspective on system reliability and deployment.",
-          "I am now looking for a <strong>PhD opportunity in Artificial Intelligence</strong> to deepen my research."
+          "Passionate about <strong>artificial intelligence</strong>, <strong>cybersecurity</strong>, <strong>data science</strong> and building innovative solutions, I share here my journey and the projects I work on."
         ],
         facts: [
           { icon: "mapPin", label: "Location", value: "Casablanca, Morocco" },
           { icon: "graduation", label: "Dual degree", value: "HESTIM × INSA Hauts-de-France" },
-          { icon: "target", label: "Goal", value: "PhD in AI" },
+          { icon: "cpu", label: "Fields", value: "AI · Cybersecurity · Data" },
           { icon: "languages", label: "Languages", value: "French · English" }
         ],
         soft: [
           { icon: "heart", label: "Emotional intelligence" },
           { icon: "listChecks", label: "Organization" },
-          { icon: "users", label: "Teamwork" }
+          { icon: "users", label: "Teamwork" },
+          { icon: "messageText", label: "Effective communication" }
         ]
       },
 
@@ -547,7 +548,7 @@ window.PORTFOLIO = {
         {
           period: "2021 – 2026",
           org: "HESTIM — Casablanca, Morocco",
-          role: "State Engineering Degree in Computer Science and Artificial Intelligence",
+          role: "State Engineering Degree in Computer Engineering and Artificial Intelligence",
           desc: "5-year program, equivalent to an M.Eng. / M.Sc."
         },
         {
@@ -655,20 +656,20 @@ window.PORTFOLIO = {
           cats: ["vision", "research"],
           label: "Research",
           title: "Intelligent exam cheating detection",
-          summary: "A proctoring system that detects cheating behaviour from surveillance camera images.",
+          summary: "An exam-room cheating detection system based on YOLO (smartphone detection) and surveillance camera image analysis.",
           context: "Research project — HESTIM",
           highlights: [
             "Automatic analysis of images from exam-room surveillance cameras",
-            "Identification of suspicious candidate behaviour",
+            "Smartphone detection with YOLO and identification of suspicious behaviour",
             "Research process: literature review, data collection, experimentation and evaluation",
             "Goal: assist invigilators and strengthen exam fairness"
           ],
-          tags: ["Computer vision", "Deep Learning", "Behaviour analysis", "Research"]
+          tags: ["Computer vision", "YOLO", "Deep Learning", "Research"]
         }
       ],
 
       skills: [
-        { icon: "brain", title: "Deep Learning & AI", items: ["Python", "TensorFlow", "PyTorch", "Neural networks"] },
+        { icon: "brain", title: "Deep Learning & AI", items: ["Python", "Machine Learning", "TensorFlow", "PyTorch", "Neural networks"] },
         { icon: "eye", title: "Computer vision", items: ["OpenCV", "torchvision", "Ultralytics YOLO", "Object detection", "Segmentation"] },
         { icon: "chart", title: "Data analysis", items: ["Pandas", "NumPy", "Scikit-learn"] },
         { icon: "cloud", title: "Tools & Cloud", items: ["Git", "Docker", "Jupyter", "AWS"] },
@@ -678,6 +679,7 @@ window.PORTFOLIO = {
 
       certifications: [
         { title: "Neural Networks & Deep Learning", issuer: "Coursera", icon: "brain" },
+        { title: "Data Analysis for ML", issuer: "", icon: "chart" },
         { title: "HCIA Cloud Computing V5.5", issuer: "Huawei", icon: "cloud" },
         { title: "HCIA Security V4.0", issuer: "Huawei", icon: "shield" },
         { title: "Project Management (PMI)", issuer: "Coursera", icon: "listChecks" }
@@ -700,8 +702,8 @@ window.PORTFOLIO = {
       ],
 
       subjects: [
-        { id: "phd", label: "PhD opportunity" },
-        { id: "research", label: "Research collaboration" },
+        { id: "hello", label: "General enquiry" },
+        { id: "collab", label: "Project or collaboration" },
         { id: "job", label: "Job opportunity" },
         { id: "other", label: "Other" }
       ]

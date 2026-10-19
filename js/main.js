@@ -223,7 +223,7 @@
     $("#certGrid").innerHTML = T.certifications.map((c) => `
       <article class="cert card spot${RV()}">
         <span class="cert-ico" data-icon="${c.icon || "award"}"></span>
-        <div><p class="cert-title">${esc(c.title)}</p><p class="cert-issuer">${esc(c.issuer)}</p></div>
+        <div><p class="cert-title">${esc(c.title)}</p>${c.issuer ? `<p class="cert-issuer">${esc(c.issuer)}</p>` : ""}</div>
       </article>`).join("");
   }
 
@@ -412,7 +412,7 @@
       renderAll();
       startTyping();
       clearErrors();
-      syncPhoneRequirement();
+      syncContactField(false);
     });
   }
 
@@ -630,9 +630,9 @@
     $("#modalClose").addEventListener("click", closeModal);
     $("#modalCta").addEventListener("click", () => {
       closeModal();
-      if (currentProject) prefillContact("research", ui("msg.project").replace("{project}", currentProject.title));
+      if (currentProject) prefillContact("collab", ui("msg.project").replace("{project}", currentProject.title));
     });
-    $("#thesisCta").addEventListener("click", () => prefillContact("phd", ui("msg.thesis")));
+    $("#goalCta").addEventListener("click", () => prefillContact("hello", ui("msg.hello")));
   }
 
   /* ------------------------------- Toasts ------------------------------ */
@@ -673,15 +673,34 @@
     return r ? r.value : "email";
   };
 
-  function syncPhoneRequirement() {
-    const need = preferred() !== "email";
-    $("#phoneOpt").classList.toggle("is-hidden", need);
-    fields.phone.required = need;
+  // Libellés reçus par Ahmed dans l'email Web3Forms (toujours en français)
+  const METHOD_FR = { email: "Email", phone: "Téléphone", whatsapp: "WhatsApp" };
+
+  function showField(wrap, input, show, animate) {
+    input.disabled = !show;
+    input.required = show;
+    if (!show) clearError(input);
+    if (wrap.hidden === !show) return;
+    wrap.hidden = !show;
+    if (show && animate && !reduceMotion) {
+      wrap.classList.remove("field-in");
+      void wrap.offsetWidth; // relance l'animation
+      wrap.classList.add("field-in");
+    }
+  }
+
+  // Seul le champ correspondant au mode de contact choisi est affiché
+  function syncContactField(animate) {
+    const pref = preferred();
+    showField($("#emailField"), fields.email, pref === "email", animate);
+    showField($("#phoneField"), fields.phone, pref !== "email", animate);
+    $("#phoneLabel").textContent = ui(pref === "whatsapp" ? "form.whatsapp" : "form.phone");
+    $("#phoneIco").innerHTML = icon(pref === "whatsapp" ? "whatsapp" : "phone");
   }
 
   function setPreferred(v) {
     const r = form.querySelector(`input[name="preferred"][value="${v}"]`);
-    if (r) { r.checked = true; syncPhoneRequirement(); }
+    if (r) { r.checked = true; syncContactField(true); }
   }
 
   function setError(input, msg) {
@@ -708,10 +727,13 @@
     const v = (k) => fields[k].value.trim();
     let ok = true;
     if (v("name").length < 2) { setError(fields.name, ui("err.name")); ok = false; }
-    if (!EMAIL_RE.test(v("email"))) { setError(fields.email, ui("err.email")); ok = false; }
-    const phone = v("phone");
-    if (preferred() !== "email" && !phone) { setError(fields.phone, ui("err.phone")); ok = false; }
-    else if (phone && !PHONE_RE.test(phone)) { setError(fields.phone, ui("err.phoneInvalid")); ok = false; }
+    if (preferred() === "email") {
+      if (!EMAIL_RE.test(v("email"))) { setError(fields.email, ui("err.email")); ok = false; }
+    } else {
+      const phone = v("phone");
+      if (!phone) { setError(fields.phone, ui("err.phone")); ok = false; }
+      else if (!PHONE_RE.test(phone)) { setError(fields.phone, ui("err.phoneInvalid")); ok = false; }
+    }
     if (v("message").length < 10) { setError(fields.message, ui("err.message")); ok = false; }
     if (!ok) {
       const first = form.querySelector(".has-error input, .has-error textarea");
@@ -728,9 +750,7 @@
   }
 
   function openMailto(d, subject) {
-    const lines = [d.message, "", "—", `${ui("form.name")} : ${d.name}`, `${ui("form.email")} : ${d.email}`];
-    if (d.phone) lines.push(`${ui("form.phone")} : ${d.phone}`);
-    lines.push(`${ui("form.prefer")} : ${d.preferredLabel}`);
+    const lines = [d.message, "", "—", `${ui("form.name")} : ${d.name}`, `${d.preferredLabel} : ${d.contact}`];
     window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
     toast(ui("toast.mailto"), "info");
   }
@@ -760,7 +780,7 @@
     });
 
     form.addEventListener("change", (e) => {
-      if (e.target.name === "preferred") { syncPhoneRequirement(); clearError(fields.phone); }
+      if (e.target.name === "preferred") syncContactField(true);
     });
     ["name", "email", "phone", "message"].forEach((k) => {
       fields[k].addEventListener("input", () => clearError(fields[k]));
@@ -779,8 +799,7 @@
       const pref = preferred();
       const d = {
         name: fields.name.value.trim(),
-        email: fields.email.value.trim(),
-        phone: fields.phone.value.trim(),
+        contact: (pref === "email" ? fields.email : fields.phone).value.trim(),
         message: fields.message.value.trim(),
         subjectLabel: fields.subject.options[fields.subject.selectedIndex].text,
         preferredLabel: ui({ email: "form.prefEmail", phone: "form.prefPhone", whatsapp: "form.prefWhatsapp" }[pref])
@@ -800,9 +819,10 @@
             subject,
             from_name: "Portfolio — Ahmed JABRI",
             name: d.name,
-            email: d.email,
-            "Téléphone": d.phone || "—",
-            "Contact préféré": d.preferredLabel,
+            // "email" sert d'adresse de réponse dans Web3Forms
+            [pref === "email" ? "email" : METHOD_FR[pref]]: d.contact,
+            "Contact préféré": METHOD_FR[pref],
+            ...(pref === "whatsapp" ? { "Répondre sur WhatsApp": `https://wa.me/${d.contact.replace(/\D/g, "")}` } : {}),
             "Sujet": d.subjectLabel,
             message: d.message
           })
@@ -811,7 +831,7 @@
         if (!res.ok || !json.success) throw new Error(json.message || `HTTP ${res.status}`);
         store.set("pf-last-sent", String(Date.now()));
         form.reset();
-        syncPhoneRequirement();
+        syncContactField(false);
         toast(ui("toast.success"), "success");
       } catch (err) {
         console.error("Envoi du formulaire impossible :", err);
@@ -821,7 +841,7 @@
       }
     });
 
-    syncPhoneRequirement();
+    syncContactField(false);
   }
 
   /* ------------------------------ Médias ------------------------------- */

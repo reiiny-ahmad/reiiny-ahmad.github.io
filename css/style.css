@@ -384,14 +384,14 @@ strong { color: var(--text); font-weight: 600; }
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: var(--success);
+  background: var(--accent);
 }
 .pulse-dot::after {
   content: "";
   position: absolute;
   inset: -4px;
   border-radius: 50%;
-  border: 2px solid var(--success);
+  border: 2px solid var(--accent);
   animation: ping 2s var(--ease) infinite;
 }
 
@@ -1189,25 +1189,6 @@ strong { color: var(--text); font-weight: 600; }
   .quick-btn--desk { display: none; }
 }
 
-.privacy {
-  margin-top: 22px;
-  display: flex;
-  gap: 14px;
-  padding: 18px;
-  border-radius: 14px;
-  border: 1px dashed var(--border-strong);
-  font-size: 0.9rem;
-  color: var(--text-2);
-}
-.privacy-ico {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(52, 211, 153, 0.14);
-  color: var(--success);
-}
-.privacy-title { font-weight: 600; color: var(--text); margin-bottom: 2px; }
-
 .contact-loc {
   margin-top: 22px;
   display: inline-flex;
@@ -1235,7 +1216,6 @@ strong { color: var(--text); font-weight: 600; }
   font-weight: 600;
   color: var(--text);
 }
-.opt { font-weight: 400; color: var(--text-3); }
 
 .field input,
 .field select,
@@ -1279,6 +1259,24 @@ strong { color: var(--text); font-weight: 600; }
   color: var(--danger);
 }
 .field-error:empty { display: none; }
+.field-hint { margin-top: 6px; font-size: 0.8rem; color: var(--text-3); }
+
+/* Champ de contact affiché selon le mode choisi */
+.contact-field[hidden] { display: none; }
+.contact-field.field-in { animation: fieldIn 0.45s var(--ease) both; }
+
+.input-icon { position: relative; }
+.input-ico {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-3);
+  pointer-events: none;
+  transition: color 0.2s;
+}
+.field .input-icon input { padding-left: 44px; }
+.input-icon:focus-within .input-ico { color: var(--accent); }
 
 .select-wrap { position: relative; }
 .select-wrap::after {
@@ -1522,6 +1520,7 @@ strong { color: var(--text); font-weight: 600; }
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 @keyframes toastIn { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
 @keyframes toastOut { to { opacity: 0; transform: translateX(30px); } }
+@keyframes fieldIn { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 
 /* ---------------------------- Responsive ---------------------------- */
 @media (max-width: 1080px) {
