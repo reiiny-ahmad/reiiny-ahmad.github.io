@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="fr" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ahmed JABRI — Ingénieur IA & candidat au doctorat</title>
+  <meta name="description" content="Portfolio d'Ahmed JABRI, Ingénieur d'État en Informatique et Intelligence Artificielle (HESTIM) et diplômé d'un Master en Cyberdéfense (INSA Hauts-de-France). Deep learning, vision par ordinateur, systèmes intelligents.">
+  <meta name="author" content="Ahmed JABRI">
+  <meta name="theme-color" content="#070a12">
+  <meta property="og:type" content="profile">
+  <meta property="og:title" content="Ahmed JABRI — Ingénieur IA & candidat au doctorat">
+  <meta property="og:description" content="Deep learning, vision par ordinateur et systèmes intelligents. Ouvert aux opportunités de doctorat en IA.">
+  <meta name="twitter:card" content="summary">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+
+  <script>
+    /* Thème appliqué avant l'affichage pour éviter le flash */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("pf-theme"); } catch (e) {}
+      if (!t) t = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Ahmed JABRI",
+    "jobTitle": "Ingénieur d'État en Informatique et Intelligence Artificielle",
+    "address": { "@type": "PostalAddress", "addressLocality": "Casablanca", "addressCountry": "MA" },
+    "alumniOf": [
+      { "@type": "CollegeOrUniversity", "name": "HESTIM" },
+      { "@type": "CollegeOrUniversity", "name": "INSA Hauts-de-France" }
+    ],
+    "knowsAbout": ["Deep Learning", "Computer Vision", "Natural Language Processing", "Generative AI", "Cybersecurity"],
+    "sameAs": ["https://www.linkedin.com/in/jabri-ahmed-629905287/"]
+  }
+  </script>
+</head>
+<body>
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
+  <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+  <!-- ============================ NAVIGATION ============================ -->
+  <header class="nav" id="nav">
+    <div class="container nav-inner">
+      <a href="#home" class="logo" aria-label="Ahmed JABRI">
+        <span class="logo-mark">AJ</span><span class="logo-dot">.</span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+        <a href="#about" data-i18n="nav.about">À propos</a>
+        <a href="#journey" data-i18n="nav.journey">Parcours</a>
+        <a href="#projects" data-i18n="nav.projects">Projets</a>
+        <a href="#skills" data-i18n="nav.skills">Compétences</a>
+        <a href="#research" data-i18n="nav.research">Recherche</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="icon-btn lang-btn" id="langToggle" type="button" data-i18n-aria="a11y.lang" aria-label="Switch to English">EN</button>
+        <button class="icon-btn" id="themeToggle" type="button" data-i18n-aria="a11y.theme" aria-label="Changer de thème">
+          <span class="theme-icon theme-icon--sun" data-icon="sun"></span>
+          <span class="theme-icon theme-icon--moon" data-icon="moon"></span>
+        </button>
+        <a href="#contact" class="btn btn-primary btn-sm nav-cta" data-i18n="nav.cta">Me contacter</a>
+        <button class="icon-btn burger" id="burger" type="button" aria-expanded="false" aria-controls="navLinks" data-i18n-aria="a11y.menu" aria-label="Ouvrir le menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ============================== HERO =============================== -->
+    <section class="hero" id="home">
+      <canvas class="hero-canvas" id="neuralCanvas" aria-hidden="true"></canvas>
+      <div class="hero-glow hero-glow--1" aria-hidden="true"></div>
+      <div class="hero-glow hero-glow--2" aria-hidden="true"></div>
+
+      <div class="container hero-inner">
+        <div class="hero-text">
+          <p class="badge intro-anim" style="--i:0">
+            <span class="pulse-dot" aria-hidden="true"></span>
+            <span data-i18n="hero.badge">Ouvert aux opportunités de doctorat en IA</span>
+          </p>
+          <p class="hero-hello intro-anim" style="--i:1" data-i18n="hero.hello">Bonjour, je suis</p>
+          <h1 class="hero-name intro-anim" style="--i:2">Ahmed <span class="grad-text">JABRI</span></h1>
+          <p class="hero-role intro-anim" style="--i:3" aria-live="polite">
+            <span class="prompt" aria-hidden="true">&gt;</span>
+            <span id="typed"></span><span class="caret" aria-hidden="true"></span>
+          </p>
+          <p class="hero-intro intro-anim" style="--i:4" data-i18n="hero.intro">Ingénieur d'État en Informatique & Intelligence Artificielle et diplômé d'un Master en Cyberdéfense.</p>
+
+          <div class="hero-cta intro-anim" style="--i:5">
+            <a href="#contact" class="btn btn-primary">
+              <span data-i18n="hero.ctaContact">Me contacter</span><span data-icon="arrowRight"></span>
+            </a>
+            <a href="#projects" class="btn btn-ghost" data-i18n="hero.ctaProjects">Voir mes projets</a>
+            <a href="#" class="btn btn-ghost is-hidden" id="cvBtn" download>
+              <span data-icon="download"></span><span data-i18n="hero.ctaCv">Télécharger le CV</span>
+            </a>
+          </div>
+
+          <div class="hero-social intro-anim" style="--i:6">
+            <a class="social" id="linkedinHero" href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><span data-icon="linkedin"></span></a>
+            <span class="hero-loc"><span data-icon="mapPin"></span><span id="heroLoc">Casablanca, Maroc</span></span>
+          </div>
+        </div>
+
+        <div class="hero-visual intro-anim" style="--i:3" aria-hidden="true">
+          <div class="avatar">
+            <div class="avatar-ring"></div>
+            <div class="avatar-ring avatar-ring--2"></div>
+            <div class="avatar-core" id="avatarCore"><span class="avatar-initials">AJ</span></div>
+            <span class="chip-float chip-float--1">PyTorch</span>
+            <span class="chip-float chip-float--2">YOLO</span>
+            <span class="chip-float chip-float--3">OpenCV</span>
+            <span class="chip-float chip-float--4">TensorFlow</span>
+            <span class="chip-float chip-float--5">AWS</span>
+          </div>
+        </div>
+      </div>
+
+      <a href="#about" class="scroll-hint" data-i18n-aria="hero.scroll" aria-label="Défiler">
+        <span class="mouse"><span></span></span>
+        <span data-i18n="hero.scroll">Défiler</span>
+      </a>
+    </section>
+
+    <!-- ============================== STATS ============================== -->
+    <section class="stats-band" aria-label="Chiffres clés">
+      <div class="container stats" id="stats"></div>
+    </section>
+
+    <!-- ============================== ABOUT ============================== -->
+    <section class="section" id="about">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="about.kicker">01 — À propos</p>
+          <h2 data-i18n="about.title">Entre recherche en IA et ingénierie de systèmes intelligents</h2>
+        </header>
+
+        <div class="about-grid">
+          <div class="about-text reveal" id="aboutText"></div>
+          <div class="about-side">
+            <div class="facts" id="aboutFacts"></div>
+            <div class="soft card reveal">
+              <h3 class="mini-title" data-i18n="about.soft">Compétences humaines</h3>
+              <div class="soft-list" id="softSkills"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= JOURNEY ============================= -->
+    <section class="section section--alt" id="journey">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="journey.kicker">02 — Parcours</p>
+          <h2 data-i18n="journey.title">Expérience & formation</h2>
+        </header>
+
+        <div class="journey-grid">
+          <div class="journey-col">
+            <h3 class="col-title reveal"><span data-icon="briefcase"></span><span data-i18n="journey.exp">Expérience professionnelle</span></h3>
+            <ol class="timeline" id="expTimeline"></ol>
+          </div>
+          <div class="journey-col">
+            <h3 class="col-title reveal"><span data-icon="graduation"></span><span data-i18n="journey.edu">Formation académique</span></h3>
+            <ol class="timeline" id="eduTimeline"></ol>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= PROJECTS ============================ -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="projects.kicker">03 — Projets</p>
+          <h2 data-i18n="projects.title">Projets sélectionnés</h2>
+          <p class="section-sub" data-i18n="projects.sub">De la vision par ordinateur à la cybersécurité.</p>
+        </header>
+
+        <div class="filters reveal" id="projectFilters" role="toolbar" aria-label="Filtres"></div>
+        <div class="projects-grid" id="projectGrid"></div>
+        <p class="empty is-hidden" id="projectsEmpty" data-i18n="projects.empty">Aucun projet dans cette catégorie.</p>
+      </div>
+    </section>
+
+    <!-- ============================== SKILLS ============================= -->
+    <section class="section section--alt" id="skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="skills.kicker">04 — Compétences</p>
+          <h2 data-i18n="skills.title">Boîte à outils technique</h2>
+          <p class="section-sub" data-i18n="skills.sub">Les outils et méthodes que j'utilise.</p>
+        </header>
+
+        <div class="skills-grid" id="skillsGrid"></div>
+
+        <h3 class="col-title certs-title reveal"><span data-icon="award"></span><span data-i18n="skills.certs">Certifications</span></h3>
+        <div class="certs-grid" id="certGrid"></div>
+      </div>
+    </section>
+
+    <!-- ============================= RESEARCH ============================ -->
+    <section class="section" id="research">
+      <div class="container">
+        <header class="section-head reveal">
+          <p class="kicker" data-i18n="research.kicker">05 — Recherche</p>
+          <h2 data-i18n="research.title">Centres d'intérêt en recherche</h2>
+        </header>
+
+        <div class="bento" id="researchBento">
+          <article class="bento-goal card spot reveal">
+            <p class="goal-label"><span data-icon="target"></span><span data-i18n="research.goalLabel">Objectif</span></p>
+            <h3 data-i18n="research.goalTitle">Un doctorat en Intelligence Artificielle</h3>
+            <p data-i18n="research.goalText"></p>
+            <button class="btn btn-primary" type="button" id="thesisCta">
+              <span data-i18n="research.cta">Proposer un sujet de thèse</span><span data-icon="arrowRight"></span>
+            </button>
+          </article>
+          <div class="bento-interests" id="interestsGrid"></div>
+          <article class="bento-domains card reveal">
+            <h3 class="mini-title" data-i18n="research.domains">Domaines d'application explorés</h3>
+            <ul class="domain-list" id="domainList"></ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================== CONTACT ============================ -->
+    <section class="section section--alt" id="contact">
+      <div class="container contact-grid">
+        <div class="contact-info">
+          <header class="section-head reveal">
+            <p class="kicker" data-i18n="contact.kicker">06 — Contact</p>
+            <h2 data-i18n="contact.title">Travaillons ensemble</h2>
+            <p class="section-sub" data-i18n="contact.sub">Une offre de thèse, un projet de recherche ou une collaboration ?</p>
+          </header>
+
+          <div class="quick reveal">
+            <h3 class="mini-title" data-i18n="contact.quick">Contact direct</h3>
+            <div class="quick-grid">
+              <button type="button" class="quick-btn" id="btnEmail">
+                <span class="quick-ico" data-icon="mail"></span><span data-i18n="contact.email">Email</span>
+              </button>
+              <button type="button" class="quick-btn" id="btnWhatsapp">
+                <span class="quick-ico" data-icon="whatsapp"></span><span data-i18n="contact.whatsapp">WhatsApp</span>
+              </button>
+              <button type="button" class="quick-btn quick-btn--touch" id="btnCall">
+                <span class="quick-ico" data-icon="phone"></span><span data-i18n="contact.call">Appeler</span>
+              </button>
+              <button type="button" class="quick-btn quick-btn--desk" id="btnCallback">
+                <span class="quick-ico" data-icon="phone"></span><span data-i18n="contact.callback">Être rappelé</span>
+              </button>
+              <a class="quick-btn" id="linkedinContact" href="#" target="_blank" rel="noopener">
+                <span class="quick-ico" data-icon="linkedin"></span><span>LinkedIn</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="privacy reveal">
+            <span class="privacy-ico" data-icon="lock"></span>
+            <div>
+              <p class="privacy-title" data-i18n="contact.privacyTitle">Coordonnées protégées</p>
+              <p data-i18n="contact.privacy">Mon email et mon numéro ne sont pas affichés publiquement.</p>
+            </div>
+          </div>
+
+          <p class="contact-loc reveal"><span data-icon="mapPin"></span><span data-i18n="contact.location">Basé à Casablanca, Maroc</span></p>
+        </div>
+
+        <form class="contact-form card reveal" id="contactForm" novalidate>
+          <h3 class="form-title" data-i18n="form.title">Envoyer un message</h3>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-name" data-i18n="form.name">Nom complet</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" data-i18n-ph="form.namePh" required>
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-email" data-i18n="form.email">Votre email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" data-i18n-ph="form.emailPh" required>
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+          </div>
+
+          <fieldset class="field">
+            <legend data-i18n="form.prefer">Je préfère être recontacté par</legend>
+            <div class="segmented">
+              <label><input type="radio" name="preferred" value="email" checked><span><span data-icon="mail"></span><span data-i18n="form.prefEmail">Email</span></span></label>
+              <label><input type="radio" name="preferred" value="phone"><span><span data-icon="phone"></span><span data-i18n="form.prefPhone">Téléphone</span></span></label>
+              <label><input type="radio" name="preferred" value="whatsapp"><span><span data-icon="whatsapp"></span><span data-i18n="form.prefWhatsapp">WhatsApp</span></span></label>
+            </div>
+          </fieldset>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="f-phone"><span data-i18n="form.phone">Votre téléphone</span> <span class="opt" id="phoneOpt">(<span data-i18n="form.optional">optionnel</span>)</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" data-i18n-ph="form.phonePh">
+              <p class="field-error" aria-live="polite"></p>
+            </div>
+            <div class="field">
+              <label for="f-subject" data-i18n="form.subject">Sujet</label>
+              <div class="select-wrap">
+                <select id="f-subject" name="subject"></select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="f-message" data-i18n="form.message">Message</label>
+            <textarea id="f-message" name="message" rows="5" data-i18n-ph="form.messagePh" required></textarea>
+            <p class="field-error" aria-live="polite"></p>
+          </div>
+
+          <!-- Anti-spam : champ invisible pour les humains -->
+          <div class="hp" aria-hidden="true">
+            <label for="f-website">Website</label>
+            <input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off">
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block" id="submitBtn">
+            <span class="btn-label" data-i18n="form.send">Envoyer le message</span>
+            <span data-icon="send"></span>
+          </button>
+          <p class="form-note"><span data-icon="lock"></span><span data-i18n="form.note">Vos informations servent uniquement à vous répondre.</span></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================== FOOTER ============================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <a href="#home" class="logo"><span class="logo-mark">AJ</span><span class="logo-dot">.</span></a>
+      <p>© <span id="year">2026</span> Ahmed JABRI. <span data-i18n="footer.rights">Tous droits réservés.</span> <span class="muted" data-i18n="footer.made">Conçu et développé à Casablanca.</span></p>
+      <a class="social" id="linkedinFooter" href="#" target="_blank" rel="noopener" aria-label="LinkedIn"><span data-icon="linkedin"></span></a>
+    </div>
+  </footer>
+
+  <!-- ============================ PROJECT MODAL ========================= -->
+  <dialog class="modal" id="projectModal" aria-labelledby="modalTitle">
+    <div class="modal-inner">
+      <button class="icon-btn modal-close" type="button" id="modalClose" data-i18n-aria="a11y.close" aria-label="Fermer"><span data-icon="x"></span></button>
+      <div class="modal-head">
+        <span class="modal-ico" id="modalIcon"></span>
+        <div>
+          <p class="modal-meta" id="modalMeta"></p>
+          <h3 id="modalTitle"></h3>
+        </div>
+      </div>
+      <p class="modal-summary" id="modalSummary"></p>
+      <div class="modal-block">
+        <h4 data-i18n="modal.context">Contexte</h4>
+        <p id="modalContext"></p>
+      </div>
+      <div class="modal-block">
+        <h4 data-i18n="modal.highlights">Points clés</h4>
+        <ul class="check-list" id="modalHighlights"></ul>
+      </div>
+      <div class="modal-block">
+        <h4 data-i18n="modal.stack">Technologies & thèmes</h4>
+        <div class="tags" id="modalTags"></div>
+      </div>
+      <button class="btn btn-primary" type="button" id="modalCta">
+        <span data-i18n="modal.cta">Échanger sur ce projet</span><span data-icon="arrowRight"></span>
+      </button>
+    </div>
+  </dialog>
+
+  <div class="toasts" id="toasts" aria-live="polite" aria-atomic="false"></div>
+
+  <button class="to-top" id="toTop" type="button" data-i18n-aria="a11y.top" aria-label="Revenir en haut"><span data-icon="arrowUp"></span></button>
+
+  <noscript><p class="noscript">Activez JavaScript pour afficher l'ensemble du portfolio.</p></noscript>
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
