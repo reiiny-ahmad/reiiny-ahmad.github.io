@@ -18,7 +18,7 @@ window.PORTFOLIO = {
        Téléphone : chiffres uniquement, avec l'indicatif pays, sans "+" (ex. 212600000000). */
     contact: {
       e: "bW9jLmxpYW1nQDIwMDJkZW1oYXlyYmFq",
-      p: "NDkzNzU0OTQ2MjEy"
+      p: ""
     },
 
     linkedin: "https://www.linkedin.com/in/jabri-ahmed-629905287/",
