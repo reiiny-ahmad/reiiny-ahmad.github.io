@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <!-- ?v= : à incrémenter à chaque mise à jour pour forcer le rechargement chez les visiteurs -->
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=4">
 
   <script>
     /* Thème appliqué avant l'affichage pour éviter le flash */
@@ -259,11 +259,8 @@
               <button type="button" class="quick-btn" id="btnWhatsapp">
                 <span class="quick-ico" data-icon="whatsapp"></span><span data-i18n="contact.whatsapp">WhatsApp</span>
               </button>
-              <button type="button" class="quick-btn quick-btn--touch" id="btnCall">
+              <button type="button" class="quick-btn" id="btnCall">
                 <span class="quick-ico" data-icon="phone"></span><span data-i18n="contact.call">Appeler</span>
-              </button>
-              <button type="button" class="quick-btn quick-btn--desk" id="btnCallback">
-                <span class="quick-ico" data-icon="phone"></span><span data-i18n="contact.callback">Être rappelé</span>
               </button>
               <a class="quick-btn" id="linkedinContact" href="#" target="_blank" rel="noopener">
                 <span class="quick-ico" data-icon="linkedin"></span><span>LinkedIn</span>
@@ -284,40 +281,17 @@
               <p class="field-error" aria-live="polite"></p>
             </div>
             <div class="field">
-              <label for="f-subject" data-i18n="form.subject">Sujet</label>
-              <div class="select-wrap">
-                <select id="f-subject" name="subject"></select>
-              </div>
-            </div>
-          </div>
-
-          <fieldset class="field">
-            <legend data-i18n="form.prefer">Comment souhaitez-vous être recontacté ?</legend>
-            <div class="segmented">
-              <label><input type="radio" name="preferred" value="email" checked><span><span data-icon="mail"></span><span data-i18n="form.prefEmail">Email</span></span></label>
-              <label><input type="radio" name="preferred" value="phone"><span><span data-icon="phone"></span><span data-i18n="form.prefPhone">Téléphone</span></span></label>
-              <label><input type="radio" name="preferred" value="whatsapp"><span><span data-icon="whatsapp"></span><span data-i18n="form.prefWhatsapp">WhatsApp</span></span></label>
-            </div>
-          </fieldset>
-
-          <!-- Seul le champ du mode de contact choisi est affiché -->
-          <div class="field contact-field" id="emailField">
-            <label for="f-email" data-i18n="form.email">Votre email</label>
-            <div class="input-icon">
-              <span class="input-ico" data-icon="mail"></span>
+              <label for="f-email" data-i18n="form.email">Votre email</label>
               <input id="f-email" name="email" type="email" autocomplete="email" data-i18n-ph="form.emailPh" required>
+              <p class="field-error" aria-live="polite"></p>
             </div>
-            <p class="field-error" aria-live="polite"></p>
           </div>
 
-          <div class="field contact-field" id="phoneField" hidden>
-            <label for="f-phone" id="phoneLabel">Votre numéro de téléphone</label>
-            <div class="input-icon">
-              <span class="input-ico" id="phoneIco"></span>
-              <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" data-i18n-ph="form.phonePh" disabled>
+          <div class="field">
+            <label for="f-subject" data-i18n="form.subject">Sujet</label>
+            <div class="select-wrap">
+              <select id="f-subject" name="subject"></select>
             </div>
-            <p class="field-hint" data-i18n="form.phoneHint">Indiquez l'indicatif du pays (ex. +212, +33).</p>
-            <p class="field-error" aria-live="polite"></p>
           </div>
 
           <div class="field">
@@ -387,7 +361,7 @@
 
   <noscript><p class="noscript">Activez JavaScript pour afficher l'ensemble du portfolio.</p></noscript>
 
-  <script src="js/data.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="js/data.js?v=4"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 </html>

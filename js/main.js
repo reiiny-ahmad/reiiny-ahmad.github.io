@@ -1,5 +1,5 @@
 /* =====================================================================
-   Portfolio — Ahmed JABRI · interactions
+   Portfolio · interactions
    ===================================================================== */
 (function () {
   "use strict";
@@ -163,7 +163,7 @@
                tabindex="0" role="button" aria-haspopup="dialog" aria-label="${esc(p.title)} — ${more}">
         <div class="project-visual">
           <span class="project-label">${esc(p.label)}</span>
-          <span class="project-date">${esc(p.date)}</span>
+          ${p.date ? `<span class="project-date">${esc(p.date)}</span>` : ""}
           <span class="project-ico">${icon(p.icon)}</span>
         </div>
         <div class="project-body">
@@ -220,6 +220,9 @@
         <div class="skill-items">${s.items.map((i) => `<span class="skill-chip">${esc(i)}</span>`).join("")}</div>
       </article>`).join("");
 
+    const hasCerts = T.certifications.length > 0;
+    $(".certs-title").classList.toggle("is-hidden", !hasCerts);
+    $("#certGrid").classList.toggle("is-hidden", !hasCerts);
     $("#certGrid").innerHTML = T.certifications.map((c) => `
       <article class="cert card spot${RV()}">
         <span class="cert-ico" data-icon="${c.icon || "award"}"></span>
@@ -412,7 +415,6 @@
       renderAll();
       startTyping();
       clearErrors();
-      syncContactField(false);
     });
   }
 
@@ -588,7 +590,7 @@
     const ico = $("#modalIcon");
     ico.style.setProperty("--h", p.hue);
     ico.innerHTML = icon(p.icon);
-    $("#modalMeta").textContent = `${p.label} · ${p.date}`;
+    $("#modalMeta").textContent = [p.label, p.date].filter(Boolean).join(" · ");
     $("#modalTitle").textContent = p.title;
     $("#modalSummary").textContent = p.summary;
     $("#modalContext").textContent = p.context;
@@ -660,48 +662,11 @@
   const fields = {
     name: $("#f-name"),
     email: $("#f-email"),
-    phone: $("#f-phone"),
     subject: $("#f-subject"),
     message: $("#f-message"),
     website: $("#f-website")
   };
   const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
-  const PHONE_RE = /^\+?[\d\s().-]{7,20}$/;
-
-  const preferred = () => {
-    const r = form.querySelector('input[name="preferred"]:checked');
-    return r ? r.value : "email";
-  };
-
-  // Libellés reçus par Ahmed dans l'email Web3Forms (toujours en français)
-  const METHOD_FR = { email: "Email", phone: "Téléphone", whatsapp: "WhatsApp" };
-
-  function showField(wrap, input, show, animate) {
-    input.disabled = !show;
-    input.required = show;
-    if (!show) clearError(input);
-    if (wrap.hidden === !show) return;
-    wrap.hidden = !show;
-    if (show && animate && !reduceMotion) {
-      wrap.classList.remove("field-in");
-      void wrap.offsetWidth; // relance l'animation
-      wrap.classList.add("field-in");
-    }
-  }
-
-  // Seul le champ correspondant au mode de contact choisi est affiché
-  function syncContactField(animate) {
-    const pref = preferred();
-    showField($("#emailField"), fields.email, pref === "email", animate);
-    showField($("#phoneField"), fields.phone, pref !== "email", animate);
-    $("#phoneLabel").textContent = ui(pref === "whatsapp" ? "form.whatsapp" : "form.phone");
-    $("#phoneIco").innerHTML = icon(pref === "whatsapp" ? "whatsapp" : "phone");
-  }
-
-  function setPreferred(v) {
-    const r = form.querySelector(`input[name="preferred"][value="${v}"]`);
-    if (r) { r.checked = true; syncContactField(true); }
-  }
 
   function setError(input, msg) {
     const f = input.closest(".field");
@@ -719,7 +684,7 @@
   }
 
   function clearErrors() {
-    [fields.name, fields.email, fields.phone, fields.message].forEach(clearError);
+    [fields.name, fields.email, fields.message].forEach(clearError);
   }
 
   function validate() {
@@ -727,13 +692,7 @@
     const v = (k) => fields[k].value.trim();
     let ok = true;
     if (v("name").length < 2) { setError(fields.name, ui("err.name")); ok = false; }
-    if (preferred() === "email") {
-      if (!EMAIL_RE.test(v("email"))) { setError(fields.email, ui("err.email")); ok = false; }
-    } else {
-      const phone = v("phone");
-      if (!phone) { setError(fields.phone, ui("err.phone")); ok = false; }
-      else if (!PHONE_RE.test(phone)) { setError(fields.phone, ui("err.phoneInvalid")); ok = false; }
-    }
+    if (!EMAIL_RE.test(v("email"))) { setError(fields.email, ui("err.email")); ok = false; }
     if (v("message").length < 10) { setError(fields.message, ui("err.message")); ok = false; }
     if (!ok) {
       const first = form.querySelector(".has-error input, .has-error textarea");
@@ -750,7 +709,7 @@
   }
 
   function openMailto(d, subject) {
-    const lines = [d.message, "", "—", `${ui("form.name")} : ${d.name}`, `${d.preferredLabel} : ${d.contact}`];
+    const lines = [d.message, "", "—", `${ui("form.name")} : ${d.name}`, `${ui("form.email")} : ${d.email}`];
     window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(lines.join("\n"))}`;
     toast(ui("toast.mailto"), "info");
   }
@@ -763,6 +722,10 @@
   }
 
   function setupContact() {
+    if (!getPhone()) {
+      $("#btnWhatsapp").classList.add("is-hidden");
+      $("#btnCall").classList.add("is-hidden");
+    }
     $("#btnEmail").addEventListener("click", () => {
       window.location.href = `mailto:${getEmail()}?subject=${encodeURIComponent(ui("msg.emailSubject"))}`;
     });
@@ -772,17 +735,7 @@
     $("#btnCall").addEventListener("click", () => {
       window.location.href = `tel:+${getPhone()}`;
     });
-    $("#btnCallback").addEventListener("click", () => {
-      setPreferred("phone");
-      form.scrollIntoView({ behavior: smooth, block: "center" });
-      setTimeout(() => fields.phone.focus({ preventScroll: true }), reduceMotion ? 0 : 500);
-      toast(ui("toast.callback"), "info");
-    });
-
-    form.addEventListener("change", (e) => {
-      if (e.target.name === "preferred") syncContactField(true);
-    });
-    ["name", "email", "phone", "message"].forEach((k) => {
+    ["name", "email", "message"].forEach((k) => {
       fields[k].addEventListener("input", () => clearError(fields[k]));
     });
 
@@ -796,13 +749,11 @@
       const last = Number(store.get("pf-last-sent")) || 0;
       if (Date.now() - last < 60000) { toast(ui("toast.cooldown"), "info"); return; }
 
-      const pref = preferred();
       const d = {
         name: fields.name.value.trim(),
-        contact: (pref === "email" ? fields.email : fields.phone).value.trim(),
+        email: fields.email.value.trim(),
         message: fields.message.value.trim(),
-        subjectLabel: fields.subject.options[fields.subject.selectedIndex].text,
-        preferredLabel: ui({ email: "form.prefEmail", phone: "form.prefPhone", whatsapp: "form.prefWhatsapp" }[pref])
+        subjectLabel: fields.subject.options[fields.subject.selectedIndex].text
       };
       const subject = `[Portfolio] ${d.subjectLabel} — ${d.name}`;
 
@@ -817,12 +768,9 @@
           body: JSON.stringify({
             access_key: CFG.web3formsKey,
             subject,
-            from_name: "Portfolio — Ahmed JABRI",
+            from_name: `Portfolio — ${CFG.name}`,
             name: d.name,
-            // "email" sert d'adresse de réponse dans Web3Forms
-            [pref === "email" ? "email" : METHOD_FR[pref]]: d.contact,
-            "Contact préféré": METHOD_FR[pref],
-            ...(pref === "whatsapp" ? { "Répondre sur WhatsApp": `https://wa.me/${d.contact.replace(/\D/g, "")}` } : {}),
+            email: d.email,
             "Sujet": d.subjectLabel,
             message: d.message
           })
@@ -831,7 +779,6 @@
         if (!res.ok || !json.success) throw new Error(json.message || `HTTP ${res.status}`);
         store.set("pf-last-sent", String(Date.now()));
         form.reset();
-        syncContactField(false);
         toast(ui("toast.success"), "success");
       } catch (err) {
         console.error("Envoi du formulaire impossible :", err);
@@ -840,8 +787,6 @@
         setSending(false);
       }
     });
-
-    syncContactField(false);
   }
 
   /* ------------------------------ Médias ------------------------------- */
@@ -856,7 +801,7 @@
   function setupPhoto() {
     if (!CFG.photo) return;
     const img = new Image();
-    img.alt = "Ahmed JABRI";
+    img.alt = CFG.name;
     img.decoding = "async";
     img.onload = () => $("#avatarCore").appendChild(img);
     img.src = CFG.photo;

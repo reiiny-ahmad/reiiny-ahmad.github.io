@@ -5,6 +5,8 @@
 
 window.PORTFOLIO = {
   config: {
+    name: "Ahmed JABRI",
+
     /* Clé d'accès Web3Forms (gratuite) : https://web3forms.com
        Saisissez votre adresse email sur le site, copiez la clé reçue et collez-la ici.
        Sans clé, le formulaire ouvre la messagerie du visiteur avec le message pré-rempli. */
@@ -95,7 +97,6 @@ window.PORTFOLIO = {
         "contact.email": "Email",
         "contact.whatsapp": "WhatsApp",
         "contact.call": "Appeler",
-        "contact.callback": "Être rappelé",
         "contact.location": "Basé à Casablanca, Maroc",
 
         "form.title": "Envoyer un message",
@@ -103,14 +104,6 @@ window.PORTFOLIO = {
         "form.namePh": "Ex. Marie Dupont",
         "form.email": "Votre email",
         "form.emailPh": "nom@exemple.com",
-        "form.phone": "Votre numéro de téléphone",
-        "form.whatsapp": "Votre numéro WhatsApp",
-        "form.phoneHint": "Indiquez l'indicatif du pays (ex. +212, +33).",
-        "form.phonePh": "+33 6 12 34 56 78",
-        "form.prefer": "Comment souhaitez-vous être recontacté ?",
-        "form.prefEmail": "Email",
-        "form.prefPhone": "Téléphone",
-        "form.prefWhatsapp": "WhatsApp",
         "form.subject": "Sujet",
         "form.message": "Message",
         "form.messagePh": "Présentez-vous brièvement et dites-moi de quoi vous souhaitez parler…",
@@ -120,15 +113,12 @@ window.PORTFOLIO = {
 
         "err.name": "Veuillez indiquer votre nom.",
         "err.email": "Veuillez saisir une adresse email valide.",
-        "err.phone": "Veuillez indiquer votre numéro.",
-        "err.phoneInvalid": "Numéro de téléphone invalide.",
         "err.message": "Votre message doit contenir au moins 10 caractères.",
 
         "toast.success": "Merci ! Votre message a bien été envoyé. Je vous réponds au plus vite.",
         "toast.error": "L'envoi a échoué. Réessayez ou utilisez le bouton Email.",
         "toast.mailto": "Votre messagerie s'ouvre avec le message pré-rempli.",
         "toast.cooldown": "Message déjà envoyé — merci de patienter une minute.",
-        "toast.callback": "Laissez votre numéro : je vous rappelle rapidement.",
         "toast.invalid": "Merci de corriger les champs indiqués.",
 
         "msg.whatsapp": "Bonjour Ahmed, je vous contacte depuis votre portfolio.",
@@ -437,7 +427,6 @@ window.PORTFOLIO = {
         "contact.email": "Email",
         "contact.whatsapp": "WhatsApp",
         "contact.call": "Call",
-        "contact.callback": "Request a call",
         "contact.location": "Based in Casablanca, Morocco",
 
         "form.title": "Send a message",
@@ -445,14 +434,6 @@ window.PORTFOLIO = {
         "form.namePh": "e.g. Jane Smith",
         "form.email": "Your email",
         "form.emailPh": "name@example.com",
-        "form.phone": "Your phone number",
-        "form.whatsapp": "Your WhatsApp number",
-        "form.phoneHint": "Include your country code (e.g. +212, +33).",
-        "form.phonePh": "+44 7700 900123",
-        "form.prefer": "How would you like me to get back to you?",
-        "form.prefEmail": "Email",
-        "form.prefPhone": "Phone",
-        "form.prefWhatsapp": "WhatsApp",
         "form.subject": "Subject",
         "form.message": "Message",
         "form.messagePh": "Briefly introduce yourself and tell me what you'd like to discuss…",
@@ -462,15 +443,12 @@ window.PORTFOLIO = {
 
         "err.name": "Please enter your name.",
         "err.email": "Please enter a valid email address.",
-        "err.phone": "Please enter your number.",
-        "err.phoneInvalid": "Invalid phone number.",
         "err.message": "Your message must be at least 10 characters long.",
 
         "toast.success": "Thank you! Your message has been sent. I'll reply as soon as possible.",
         "toast.error": "Sending failed. Please try again or use the Email button.",
         "toast.mailto": "Your mail app is opening with the message pre-filled.",
         "toast.cooldown": "Message already sent — please wait a minute.",
-        "toast.callback": "Leave your number and I'll call you back shortly.",
         "toast.invalid": "Please fix the highlighted fields.",
 
         "msg.whatsapp": "Hello Ahmed, I'm reaching out from your portfolio.",
